@@ -371,7 +371,7 @@ install_greenlight_v3(){
     mkdir -p $GL3_DIR && say "created $GL3_DIR"
   fi
 
-  local GL_IMG_REPO=docker-c2.nls.kz/kenes/fronted-kenes-kz:v1.5
+  local GL_IMG_REPO=docker-c2.nls.kz/kenes/fronted-kenes-kz:v1.8
 
   say "pulling latest $GL_IMG_REPO image..."
   docker pull $GL_IMG_REPO
@@ -393,8 +393,9 @@ install_greenlight_v3(){
   sed -i "s|^\([ \t-]*POSTGRES_PASSWORD\)\(=[ \t]*\)$|\1=$(openssl rand -hex 24)|g" $GL3_DIR/docker-compose.yml # Do not overwrite the value if not empty.
 
   local PGUSER=postgres # Postgres db user to be used by greenlight-v3.
-  local PGTXADDR=postgres:5432 # Postgres DB transport address (pair of (@ip:@port)).
+  local PGTXADDR=10.145.160.23:5432 # Postgres DB transport address (pair of (@ip:@port)).
   local RSTXADDR=redis:6379 # Redis DB transport address (pair of (@ip:@port)).
+  local POSTGRES_PASSWORD=n3rjnf3n3rjnf3
   local PGPASSWORD=$(sed -ne "s/^\([ \t-]*POSTGRES_PASSWORD=\)\(.*\)$/\2/p" $GL3_DIR/docker-compose.yml) # Extract generated Postgres password.
 
   if [ -z "$PGPASSWORD" ]; then
@@ -404,7 +405,7 @@ install_greenlight_v3(){
   local DATABASE_URL_ROOT="postgres://$PGUSER:$PGPASSWORD@$PGTXADDR"
   local REDIS_URL_ROOT="redis://$RSTXADDR"
 
-  local PGDBNAME=greenlight-v3-production
+  local PGDBNAME=kenes_nls_greenlight
   local SECRET_KEY_BASE=$(docker run --rm --entrypoint bundle $GL_IMG_REPO exec rails secret)
 
   if [ -z "$SECRET_KEY_BASE" ]; then
