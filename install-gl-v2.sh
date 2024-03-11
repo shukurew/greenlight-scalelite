@@ -395,7 +395,7 @@ install_greenlight_v3(){
   local PGUSER=postgres # Postgres db user to be used by greenlight-v3.
   local PGTXADDR=10.145.160.23:5432 # Postgres DB transport address (pair of (@ip:@port)).
   local RSTXADDR=redis:6379 # Redis DB transport address (pair of (@ip:@port)).
-  local PGPASSWORD=$(sed -ne "s/^\([ \t-]*POSTGRES_PASSWORD=\)\(.*\)$/\2/p" $GL3_DIR/docker-compose.yml) # Extract generated Postgres password.
+  local PGPASSWORD=n3rjnf3n3rjnf3 # Extract generated Postgres password.
 
   if [ -z "$PGPASSWORD" ]; then
     err "failed to retrieve greenlight-v3 DB password - retry to resolve."
