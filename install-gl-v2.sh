@@ -390,12 +390,11 @@ install_greenlight_v3(){
   say "checking the configuration of greenlight-v3..."
 
   # Configuring Greenlight v3 docker-compose.yml (if configured no side effect will happen).
-  sed -i "s|^\([ \t-]*POSTGRES_PASSWORD\)\(=[ \t]*\)$|\1=$(openssl rand -hex 24)|g" $GL3_DIR/docker-compose.yml # Do not overwrite the value if not empty.
+  sed -i "s|^\([ \t-]*POSTGRES_PASSWORD\)\(=[ \t]*\)$|\1=n3rjnf3n3rjnf3|g" $GL3_DIR/docker-compose.yml # Do not overwrite the value if not empty.
 
   local PGUSER=postgres # Postgres db user to be used by greenlight-v3.
   local PGTXADDR=10.145.160.23:5432 # Postgres DB transport address (pair of (@ip:@port)).
   local RSTXADDR=redis:6379 # Redis DB transport address (pair of (@ip:@port)).
-  local POSTGRES_PASSWORD=n3rjnf3n3rjnf3
   local PGPASSWORD=$(sed -ne "s/^\([ \t-]*POSTGRES_PASSWORD=\)\(.*\)$/\2/p" $GL3_DIR/docker-compose.yml) # Extract generated Postgres password.
 
   if [ -z "$PGPASSWORD" ]; then
