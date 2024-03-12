@@ -404,7 +404,7 @@ install_greenlight_v3(){
   local DATABASE_URL_ROOT="postgres://$PGUSER:$PGPASSWORD@$PGTXADDR"
   local REDIS_URL_ROOT="redis://$RSTXADDR"
 
-  local PGDBNAME=kenes_nls_greenlight
+  local PGDBNAME=kenes.nls.kz
   local SECRET_KEY_BASE=$(docker run --rm --entrypoint bundle $GL_IMG_REPO exec rails secret)
 
   if [ -z "$SECRET_KEY_BASE" ]; then
