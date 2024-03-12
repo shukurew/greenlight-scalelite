@@ -371,7 +371,7 @@ install_greenlight_v3(){
     mkdir -p $GL3_DIR && say "created $GL3_DIR"
   fi
 
-  local GL_IMG_REPO=docker-c2.nls.kz/kenes/fronted-kenes-kz:v1.10
+  local GL_IMG_REPO=docker-c2.nls.kz/kenes/fronted-kenes-kz:v1.9
 
   say "pulling latest $GL_IMG_REPO image..."
   docker pull $GL_IMG_REPO
