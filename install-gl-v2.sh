@@ -364,7 +364,7 @@ install_greenlight_v3(){
   check_root
   install_docker
 
-  # Preparing and checking the enviroment.
+  # Preparing and checking the enviroment..
   say "preparing and checking the enviroment to install/update greelight-v3..."
 
   if [ ! -d $GL3_DIR ]; then
