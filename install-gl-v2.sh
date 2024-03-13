@@ -522,7 +522,7 @@ HERE
   say "pulling latest greenlight-v3 services images..."
   docker-compose -f $GL3_DIR/docker-compose.yml pull
 
-  if check_container_running greenlight-v3; then
+  if check_container_running kenes; then
     # Restarting Greenlight-v3 services after updates.
     say "greenlight-v3 is updating..."
     say "shutting down greenlight-v3..."
